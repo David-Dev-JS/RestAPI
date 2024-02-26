@@ -7,8 +7,8 @@ const rateLimit = require("express-rate-limit");
 const passport = require('passport');
 const flash = require('connect-flash');
 
-const apiRouters = require('./routes/api');
-const userRouters = require('./routes/users');
+const apiRouters = require('./routers/api');
+const userRouters = require('./routers/users');
 
 const { isAuthenticated } = require('./lib/auth');
 const { connectMongoDb } = require('./database/connect');

@@ -4,8 +4,11 @@
   "description": "Rest-API - Express JS",
   "main": "app.js",
   "type": "commonjs",
+  "engines": {
+    "node": "18.x"
+  },
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "node app.js"
   },
   "keywords": [
     "mongodb",
@@ -14,14 +17,6 @@
     "restapi"
   ],
   "author": "David XD",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/fawwaz37/nodejs-restapi.git"
-  },
-  "bugs": {
-    "url": "https://github.com/fawwaz37/nodejs-restapi/issues"
-  },
-  "homepage": "https://github.com/fawwaz37/nodejs-restapi",
   "license": "ISC",
   "dependencies": {
     "axios": "^1.6.7",
