@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= title %></title> <!-- Contoh menampilkan judul dinamis -->
+    <style>
+        /* Style Anda */
+        .menu-toggle {
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 25px;
+        }
+        .bar1, .bar2, .bar3 {
+            width: 35px;
+            height: 5px;
+            background-color: #333;
+            margin: 6px 0;
+            transition: 0.4s;
+        }
+        .menu-toggle.active .bar1 {
+            transform: rotate(-45deg) translate(-7px, 6px);
+        }
+        .menu-toggle.active .bar2 {
+            opacity: 0;
+        }
+        .menu-toggle.active .bar3 {
+            transform: rotate(45deg) translate(-7px, -6px);
+        }
+        .menu {
+            display: none;
+            position: absolute;
+            top: 50px;
+            left: 10px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+        }
+        .menu-item {
+            margin-bottom: 5px;
+        }
+        .group-title {
+            cursor: pointer;
+            user-select: none;
+        }
+        .group-content {
+            display: none;
+        }
+        .group-title::before {
+            content: '\25BC';
+            display: inline-block;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="menu-toggle" class="menu-toggle">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+    </div>
+    <div id="menu" class="menu">
+        <% menuItems.forEach(function(item) { %> <!-- Contoh iterasi array menuItems -->
+            <div class="menu-item">
+                <div class="group-title"><%= item.title %></div>
+                <div class="group-content">
+                    <p><a style="color:#FB667A" href="<%= item.url %>" target="_blank"><%= item.name %></a> - <%= item.description %></p>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var menuToggle = document.getElementById('menu-toggle');
+        var menu = document.getElementById('menu');
+
+        menuToggle.addEventListener('click', function () {
+            menu.style.display = menu.style.display === 'none' || menu.style.display === '' ? 'block' : 'none';
+            this.classList.toggle('active');
+        });
+
+        var toggles = document.querySelectorAll('.group-title');
+        toggles.forEach(function (toggle) {
+            toggle.addEventListener('click', function () {
+                this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none';
+            });
+        });
+    });
+</script>
+</body>
+</html>
